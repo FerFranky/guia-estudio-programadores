@@ -69,3 +69,14 @@ El sistema de archivos de Linux está estructurado en directorios con funciones 
 Este tutorial cubre los aspectos fundamentales de la terminal de Linux, la gestión de paquetes, archivos, procesos, usuarios y permisos. Puedes consultar más documentación oficial en sitios como [Linux Documentation Project](http://www.tldp.org/) para profundizar.
 
 [Volver al índice](../README.md)  # Enlace para volver al índice
+
+---
+
+<p align="center">
+  <samp>Hecho con código, café ☕ y determinación 💻</samp><br>
+  <samp>Desarrollado por <a href="https://github.com/FerFranky">[Fernando Olmos]</a> 🚀</samp><br>
+  <samp><i>// Siempre en constante evolución // 🔧</i></samp><br>
+  <samp><i>if(works) { don't_touch_it(); }</i></samp>
+</p>
+
+---

@@ -19,3 +19,14 @@ Este tutorial está dividido en varias secciones. Haz clic en los enlaces para a
 - [Comandos de Docker para Contenedores](Docker/contenedores_docker.md)
 - [Comandos Docker Compose](Docker/compose_docker.md)
 - [Despliegue en Digital Ocean](Docker/digital-ocean_docker.md)
+
+---
+
+<p align="center">
+  <samp>Hecho con código, café ☕ y determinación 💻</samp><br>
+  <samp>Desarrollado por <a href="https://github.com/FerFranky">[Fernando Olmos]</a> 🚀</samp><br>
+  <samp><i>// Siempre en constante evolución // 🔧</i></samp><br>
+  <samp><i>if(works) { don't_touch_it(); }</i></samp>
+</p>
+
+---
