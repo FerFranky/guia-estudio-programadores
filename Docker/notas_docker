@@ -1,0 +1,172 @@
+### Comandos de docker para imagenes ###
+# Construir una imagen a partir de un dockerfile
+docker build -t hola-mundo .
+# Listar las imagenes existentes
+docker image ls
+docker images
+# Buscar y ejecutar una imagen en particular
+docker run name_image
+# Ver procesos de docker
+docker ps 
+# Ver dockers detenidos
+docker ps -a
+# Ver dockers detenidos con su descripcion
+docker ps -la
+# Ingresar a la shell de un contenedor (Se crea una nueva)
+docker run -it name_image
+# Iniciar e ingresar a una imagen ya existente (Con su id del contenedor)
+docker start -i c8cfc0841f9f
+# Entrar a un contenedor que ya esta corriendo
+docker exec -it -u userName c8cfc0841f9f bash
+# Construir un contenedor y ponerle nombre
+docker build -t app-react .
+# Ejecutar el contenedor construido previamente y que se ejecute en la terminal sh
+docker run -it app-react sh
+# Eliminar los contenedores que no esten en uso
+docker container prune
+# Eliminar imagenes que no esten en uso
+docker image prune
+# Borrar una imagen en especifico
+docker image rm name-or-id
+# Eliminar una image con nombre y version
+docker image rm name-or-id:version
+# Crear una imagen a partir de otra
+docker image tag app-react:1 app-react:2
+# Subir imagen al repositorio docker hub
+docker push user/name:tagname
+# Revisar redes instaladas
+docker network ls
+
+# Comandos de docker para contenedores
+# Crear un contenedor a partir de una imagen creada anteriormente
+docker create --name hola-mundo app-react:2
+# Ver los contenedores que estan detenidos
+docker ps -a
+# Iniciar un contenedor especifico
+docker start hola-mundo
+# Construir y ejecutar un contenedor
+docker run -d --name hola-mundo-run app-react:2
+# Ver contenedores en ejecucion
+docker ps
+# Detener un contenedor en especifico
+docker stop hola-mundo-run
+# Eliminar todos los contenedores que NO se esten ejecutando
+docker container prune
+# Ver los logs de un contenedor
+docker logs hola-mundo
+# Ver los logs de un contenedor en tiempo real
+docker logs -f hola-mundo
+# Ver los logs de un contenedor dolo las ultimas 5 lineas
+docker logs -n 5 hola-mundo
+# Ver los logs de un contenedor las ultimas lineas y ver el timestamp
+docker logs -n 10 -t hola-mundo
+# Ver los logs de un contenedor convinando ver en tiempo real, las ultimas lineas y el timestamp
+docker logs -n 10 -t -f hola-mundo
+# Ejecutar contenedor en un puerto en especifico
+docker run -d -p 80:5173 --name reactrun app-react:5
+# Detener un contenedor en especifico
+docker stop 380f86138cd1
+# Volver a iniciar el contenedor que esta detenido
+docker start 380f86138cd1
+# Eliminar un contenedor que previamente debe estar detenido
+docker container rm 38e9c1288080
+# Eliminar un contenedor sin importar si esta ejecutandose
+docker container rm -f 380f86138cd1
+# Crear un volumen de datos
+docker volume create datos
+# Ver los detalles del volumen creado
+docker inspect datos
+# Asignar volumen de datos a un contenedor en especifico
+docker run -d -p 3000:3000 --name holavolumen -v datos:/app/datos app-react:6
+
+# Limpiar espacio de trabajo
+# Listar los ids de los contenedores creados
+docker container ls -aq
+# Eliminar todos los contenedores existentes
+docker container rm -f $(docker container ls -aq)
+# Listar los ids de las imagenes creadas
+docker image ls -q
+# Eliminar todas los imagenes existentes
+docker image rm -f $(docker image ls -q)
+
+# Comandos docker compose
+# Crear y ejecutar contenedores
+docker compose up
+# Ver ayuda de las opciones de docker comose
+docker compose up --help
+# Construir imagenes sin tomar en cuenta cache
+docker compose build --no-cache
+# Detener, eliminar contenedores y redes
+docker compose down
+# Construir, crear, ejecutar y enviar a segundo plano el contenedor
+docker compose up --build -d
+# Ver los ultimos logs del contenedor
+docker compose logs
+# Ver logs en tiempo real con su timestamp
+docker compose logs -f -t
+# Ver los contenedores que se estan ejecutando
+docker compose ps
+
+# Desplegar en digital ocean
+# Verificar si esta instalado docker en el droplet
+sudo docker --version
+# Si no esta instalado instalarlo
+# Actualizar dependencias
+# Actualizar/descargar lista de dependencias disponibles
+sudo apt update
+# Actualizar los paquetes ya instalados
+sudo apt upgrade
+# Instalar dependencias para descargar los paquetes
+# apt-transport-https: permite el uso de repositorios HTTPS.
+# ca-certificates: gestiona certificados de autoridades para conexiones HTTPS seguras.
+# curl: permite hacer solicitudes HTTP/HTTPS desde la terminal.
+# software-properties-common: facilita la gestión de repositorios de software.
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+# Descargar e instalar la clave GPG del repositorio oficial de Docker en tu sistema Ubuntu
+# Parte 1
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg:
+# curl: Es una herramienta de línea de comandos que permite hacer solicitudes a servidores web.
+# -f: Hace que curl falle "silenciosamente" si la solicitud HTTP devuelve un error 400 o superior (en lugar de descargar una respuesta de error).
+# -s: Hace que curl no muestre mensajes de progreso ni errores (lo hace funcionar en "modo silencioso").
+# -S: Muestra errores si ocurren, aunque esté en modo silencioso.
+# -L: Sigue redirecciones HTTP (útil si la URL original redirige a otra).
+# https://download.docker.com/linux/ubuntu/gpg: Esta es la URL del archivo que contiene la clave GPG de Docker.
+# Parte 2
+# | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg:
+# |: El carácter pipe (|) redirige la salida del comando anterior (la clave GPG que descargaste con curl) como entrada al siguiente comando (gpg).
+# sudo: Ejecuta el comando con privilegios de superusuario, ya que necesitas permisos de administrador para guardar archivos en directorios protegidos como /usr/share/keyrings/.
+# gpg: Herramienta de GNU para el cifrado y la gestión de claves GPG.
+# --dearmor: Convierte una clave GPG del formato ASCII (texto plano) a un formato binario para ser utilizado por apt y otros gestores de paquetes.
+# -o /usr/share/keyrings/docker-archive-keyring.gpg: Especifica la ruta de salida del archivo donde se almacenará la clave convertida. En este caso, se guarda en /usr/share/keyrings/docker-archive-keyring.gpg, un lugar estándar para almacenar claves GPG de repositorios de software.
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+# agregar el repositorio oficial de Docker a la lista de fuentes de software (sources.list) de tu sistema Ubuntu
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# Actualizar/descargar lista de dependencias disponibles
+sudo apt update
+# Instalar Docker Community Edition
+# docker-ce (Docker Community Edition) es la versión gratuita y de código abierto de Docker (Motor de docker)
+# docker-ce-cli es el cliente de línea de comandos para Docker
+# containerd es un runtime de contenedores independiente que gestiona el ciclo de vida de los contenedores en el sistema.
+sudo apt install docker-ce docker-ce-cli containerd.io
+# Modificar la configuración del usuario actual para que pueda ejecutar comandos de Docker sin necesidad de utilizar sudo cada vez.
+sudo usermod -aG docker $USER
+# Instalar docker compose
+sudo curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# Cambiar los permisos de un archivo, en este caso el ejecutable de Docker Compose, para hacerlo ejecutable
+sudo chmod +x /usr/local/bin/docker-compose
+# Verificar si esta instalado docker en el droplet
+docker-compose --version
+# Iniciar docker en el sistema
+sudo systemctl start docker
+# Habilitar para que el servicio se inicie en automatico cada que se reinicie el sistema
+sudo systemctl enable docker
+# Este comando genera un par de claves SSH. SSH (Secure Shell) es un protocolo que permite acceder de forma segura a servidores remotos
+ssh-keygen -t ed25519 -C "fol9602@gmail.com"
+# Este comando muestra el contenido de la clave pública (Copiarla y pegarla en las configuraciones del repositorio)
+cat ~/.ssh/id_ed25519.pub
+# Clonar el repositorio en el server
+git clone git@github.com:user/repository.git
+# Ejecutar el docker compose de productivo, construir los containers y ejecutar en segundo plano
+docker compose -f docker-compose.prod.yml up --build -d
+#  Adicional, reiniciar contenedor en caso de ser necesario
+docker-compose restart containerName

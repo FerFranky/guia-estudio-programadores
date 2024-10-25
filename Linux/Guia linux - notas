@@ -1,0 +1,217 @@
+### Repaso Linux ###
+
+# Estructura de la terminal
+root@23aa20e6c118:/# 
+root = usuario
+23aa20e6c118 = Nombre de la maquina
+:/ Ruta o directorios donde se encuentra
+Simbolo # Indica que los procesos se ejecutan como super usuario
+
+# Cancelar un proceso
+Ctrl c
+# Buscar un comando
+Ctrl r
+# Listar directorios
+ls
+# Listar directorios en forma de lista hacia abajo
+ls -1
+# Listar directorios con sus detalles (Permisos, usuario, grupo, peso)
+ls -l
+# Listar contenido de directorios sin entrar a los mismos
+ls /path/name_directory
+# Ver directorio actual (print working directory)
+pwd
+# Saber que usuario esta logueado
+whoami
+# Saber que terminal se esta ejecutando
+echo $0
+# Imprimir cualquier texto
+echo texto
+# Limpiar terminal
+clear
+# Ver historial de comandos ejecutados
+history
+# Ejecutar un comando anterior
+!numero_comando_en_history
+# Ir al directorio home del usuario logueado
+cd ~
+
+## Gestion de paquetes en linux ##
+# Actualizar/descargar lista de dependencias disponibles
+apt update
+# Ver lista de paquetes disponibles
+apt list
+# Instalar alguna dependencia
+apt install name_dependence
+# desinstalar alguna dependencia
+apt remove name_dependence
+
+## Sistema de archivos en linux ##
+
+# Directorio /bin
+Contiene todos las aplicaciones, comandos y ejecutables del sistema
+# Directorio /boot
+Tiene todos los archivos relacionados con el inicio del sistema
+# Directorio /dev
+Tiene todos los dispositivos (devices) conectados (USB, discos duros, etc)
+# Directorio /etc
+Significa Editable Text Configuration y contiene los archivos de configuracion de las aplicaciones instaladas
+# Directorio /home
+Almacena los archivos varios que el usuario quiera guardar en la maquina (Archivos de texto, musica, videos, documentos, etc)
+# Directorio /lib
+Contiene dependencias de terceros
+# Directorio /media y /mnt
+Sirve como convencion para montar dispositivos de almacenamiento externos
+# Directorio /proc
+Almacena todos los procesos del sistema
+# Directorio /root
+Es el equivalente al home pero para el usuario root
+# Directorio /sbin
+Aplicaciones instaladas que solo puede ejecutar el usuario root
+# Directorio /var
+Guarda archivos varios altamente cambiantes como los logs del sistema
+
+## Gestion de archivos y directorios en linux ##
+
+# Crear directorios
+mkdir name_dir
+# Mover o renombrar archivos
+mv path/old_name path/new_name
+# Crear archivos
+touch name_file.extension
+# Borrar archivos
+rm file_name
+# Borrar archivos con comodin (Ej. Borra todos los archivos que empiecen con la letra a y terminen con la extension .txt)
+rm a*.txt
+# Borrar directorios (-r significa recursive)
+rm -r adios/
+
+## Editar archivos con nano ##
+
+# instalar nano
+apt install nano
+# Crear archivo
+nano name_file.txt
+# Guardar archivo
+Con las teclas CTR o
+# Salir del editor
+Con las teclas CTR x
+# Ver el contenido del archivo sin abrirlo
+cat name_file.txt
+# Leer archivos muy largos parte por parte con more
+more name_file.txt
+# Leer archivos muy largos parte por parte con less (Instalar si no viene)
+less name_file.txt
+# Ver las primeras lineas de un archivo
+head -n 5 /etc/debconf.conf
+# Ver las ultimas lineas de un archivo
+tail -n 5 /etc/debconf.conf
+# Ver las ultimas lineas de un archivo en tiempo real incluso cuando se este modificando
+tail -f /etc/debconf.conf
+# Enviar archivo a medio de salida
+cat file.txt > /dev/stdout
+# Enviar contenido del archivo a un nuevo archivo
+cat file.txt > file2.txt
+# Concatenar contenido de 2 archivos a un nuevo archivo
+cat file.txt file2.txt > nuevo.txt
+# Agregar impresion de linea a 1 archivo nuevo
+echo "new comment" > comment.txt
+# Concatenar contenido de un archivo al final de otro archivo sin borrar el contenido
+ls -la file1.txt >> file2.txt
+# Guardar errores en un archivo de texto
+ls -la noexiste.txt 2>> file.txt
+# Guardar errores y ejecuciones exitosas en un archivo de texto
+ls -la noexiste.txt >> file.txt 2>>&1
+# Busquedas con el comando grep (Global Regular Expresion Print)
+grep texto_a_buscar file.txt
+# Busquedas con el comando grep sin case sensitive (Global Regular Expresion Print)
+grep -i texto_a_buscar file.txt
+# Busquedas con el comando grep con comodin * (Global Regular Expresion Print)
+grep -i hola *.txt
+# Busquedas con el comando grep en un directorio (Global Regular Expresion Print)
+grep -ri hola .
+# Buscar directorio
+find /etc
+# Buscar directorio y listar solo sus directorios
+find /etc -type d
+# Buscar directorio y listar solo sus archivos
+find /etc -type f
+# Buscar directorio y listar solo sus archivos cuyo nombre empiece con a
+find /etc -type f -name "a*"
+# Buscar directorio y listar solo sus archivos cuyo nombre sea con extension .log
+find / -type f -iname "*.log"
+# Encadenar comandos que se ejecuten uno tras otro
+mkdir holamundo ; cd holamundo ; echo "listo!"
+# Encadenar comandos que se ejecuten solo si el anterior es exitoso
+mkdir holamundo && cd holamundo && echo "listo!"
+# Encadenar comandos que se ejecuten solo si el anterior fallo
+mkdir holamundo || echo "Ya existe el directorio"
+# Encadenar comandos para que funcionen en conjunto
+ls -1 /etc | less
+# Utilizar \ para encadenar comandos en multiples lineas
+mkdir directorio ;\
+> cd directorio ;\
+> echo "Listo"
+
+## Gestion de variables de entorno ##
+# Listar variables de entorno existentes
+env
+# Imprimir una variable de entorno con echo
+echo $PATH
+# Imprimir una variable de entorno con printenv
+printenv PATH
+# Crear un archivo en /bin para ejecutar un archivo ejecutable
+echo "echo Hola mundoprintenv PATH!" > /bin/holamundo
+# Agregar permisos de ejecucion al archivo creado anteriormente
+chmod +x /bin/holamundo
+# Ejecutar archivo de entorno para probarlo
+holamundo
+# Crear variable de entorno con export (Se borra si se reinicia el sistema)
+export HOLA="SALUDOS COMO VARIABLE DE ENTORNO"
+# Ejecutar variable temporal con export
+printenv HOLA
+echo $HOLA
+# Crear variable de entorno en archivo .bashrc agregandola al final
+echo HOLA = "Saludos de la variable" >> .bashrc
+# Se debe reiniciar el archivo ejecutable .bashrc para ver los cambios reflejados
+source .bashrc
+# Probar la variable de entorno
+echo $HOLA
+
+# Gestion de procesos
+# Ver lista de procesos
+ps
+# Enviar un delay al proceador
+sleep no_seconds
+# Enviar un delay al proceador en segundo plano
+sleep no_seconds &
+# Ver procesos ejecutandose en segundo plano
+jobs
+# Tomar control de un proceso en segundo plano
+fg %no_process
+# Detener un proceso en segundo plano
+kill no_process
+
+# Gestion de usuarios en linux
+# Agregar usuario
+useradd -m username
+# Ver usuario creado
+cat /etc/passwd
+# Modificar terminal del usuario creado
+usermod -s /bin/bash username
+# Ver passwords de usuarios
+cat /etc/shadow
+# Cambiar de usuario al que creamos
+su username
+# Eliminar usuario
+userdel username
+
+# Gestion de grupos en linux
+# Crear un nuevo grupo
+groupadd groupname
+# Ver los grupos pertenecientes a un usuario
+groups username
+# Eliminar ungrupo en especifico
+groupdel groupname
+# Agregar a un usuario a un grupo especifico
+usermod -G groupname username
