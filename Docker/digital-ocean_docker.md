@@ -51,7 +51,7 @@
 ## Generación de Claves SSH
 
 - **Generar un par de claves SSH para acceder al servidor:**  
-  `ssh-keygen -t ed25519 -C "fol9602@gmail.com"`
+  `ssh-keygen -t ed25519 -C "email@gmail.com"`
 
 - **Mostrar el contenido de la clave pública (para agregarla en el repositorio):**  
   `cat ~/.ssh/id_ed25519.pub`

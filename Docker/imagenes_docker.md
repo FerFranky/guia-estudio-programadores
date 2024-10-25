@@ -27,18 +27,18 @@
   `docker run -it name_image`
 
 - **Iniciar e ingresar a una imagen ya existente (usando su ID de contenedor):**  
-  `docker start -i c8cfc0841f9f`
+  `docker start -i dockerId`
 
 - **Entrar a un contenedor que ya está corriendo:**  
-  `docker exec -it -u userName c8cfc0841f9f bash`
+  `docker exec -it -u userName dockerId bash`
 
 ## Creación y Ejecución de Contenedores
 
 - **Construir un contenedor y asignarle un nombre:**  
-  `docker build -t app-react .`
+  `docker build -t app-name .`
 
 - **Ejecutar el contenedor previamente construido y abrir una terminal `sh`:**  
-  `docker run -it app-react sh`
+  `docker run -it app-name sh`
 
 ## Limpieza y Eliminación
 
@@ -57,7 +57,7 @@
 ## Gestión de Versiones y Publicación
 
 - **Crear una imagen a partir de otra con una nueva etiqueta:**  
-  `docker image tag app-react:1 app-react:2`
+  `docker image tag app-name:1 app-name:2`
 
 - **Subir una imagen al repositorio Docker Hub:**  
   `docker push user/name:tagname`
