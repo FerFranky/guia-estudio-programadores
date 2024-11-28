@@ -1,4 +1,4 @@
-# Guias de comandos y trucos para programadores
+# Guias de estudio y trucos para programadores
 
 ## Guia Comandos básicos de Linux
 
@@ -19,6 +19,15 @@ Este tutorial está dividido en varias secciones. Haz clic en los enlaces para a
 - [Comandos de Docker para Contenedores](Docker/contenedores_docker.md)
 - [Comandos Docker Compose](Docker/compose_docker.md)
 - [Despliegue en Digital Ocean](Docker/digital-ocean_docker.md)
+
+## Guia de estudio Clean Code y Principios Solid
+
+### Índice
+
+- [Entendiendo la Deuda Técnica](CleanCodeAndSolid/deuda_tecnica.md)
+- [Principios de Código Limpio](CleanCodeAndSolid/principios_codigo_limpio.md)
+- [Entendiendo el acronimo STUPID](CleanCodeAndSolid/STUPID.md)
+- [Principios SOLID](CleanCodeAndSolid/principios_SOLID.md)
 
 ---
 
