@@ -29,6 +29,14 @@ Este tutorial está dividido en varias secciones. Haz clic en los enlaces para a
 - [Entendiendo el acronimo STUPID](CleanCodeAndSolid/STUPID.md)
 - [Principios SOLID](CleanCodeAndSolid/principios_SOLID.md)
 
+## Guia de estudio para NestJs
+
+### Índice
+
+- [Instalacion y comandos utiles](Nest/01-comandos_utiles.md)
+- [Agregar prefijos personalizados a las rutas](Nest/02-add_api_prefix.md)
+- [Agregar validators a los endpoints](Nest/03-agregar_validators.md)
+
 ---
 
 <p align="center">
