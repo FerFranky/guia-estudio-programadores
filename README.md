@@ -36,6 +36,7 @@ Este tutorial está dividido en varias secciones. Haz clic en los enlaces para a
 - [Instalacion y comandos utiles](Nest/01-comandos_utiles.md)
 - [Agregar prefijos personalizados a las rutas](Nest/02-add_api_prefix.md)
 - [Agregar validators a los endpoints](Nest/03-agregar_validators.md)
+- [Pipes integrados en Nest](Nest/04-pipes.md)
 
 ---
 
