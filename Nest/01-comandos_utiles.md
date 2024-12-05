@@ -41,6 +41,11 @@ yarn add class-transformer
 yarn add class-validator
 ```
 
+## Libreria para generar strings uuid
+```bash
+yarn add uuid
+```
+
 [Volver al índice](../README.md)  # Enlace para volver al índice
 
 ---
