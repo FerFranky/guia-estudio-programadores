@@ -46,6 +46,11 @@ yarn add class-validator
 yarn add uuid
 ```
 
+## Agregar libreria Dotenv para manejo de variables de entorno.
+```bash
+yarn add dotenv
+```
+
 [Volver al índice](../README.md)  # Enlace para volver al índice
 
 ---

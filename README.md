@@ -37,6 +37,7 @@ Este tutorial está dividido en varias secciones. Haz clic en los enlaces para a
 - [Agregar prefijos personalizados a las rutas](Nest/02-add_api_prefix.md)
 - [Agregar validators a los endpoints](Nest/03-agregar_validators.md)
 - [Pipes integrados en Nest](Nest/04-pipes.md)
+- [Variables de entorno con dotenv](Nest/05-variables_entorno.md)
 
 ---
 
