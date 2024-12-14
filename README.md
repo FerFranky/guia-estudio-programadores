@@ -38,6 +38,7 @@ Este tutorial está dividido en varias secciones. Haz clic en los enlaces para a
 - [Agregar validators a los endpoints](Nest/03-agregar_validators.md)
 - [Pipes integrados en Nest](Nest/04-pipes.md)
 - [Variables de entorno con dotenv](Nest/05-variables_entorno.md)
+- [Esquema de validacion para variables de entorno](Nest/06-Esquemas-validacion.md)
 
 ---
 

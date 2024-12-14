@@ -51,6 +51,11 @@ yarn add uuid
 yarn add dotenv
 ```
 
+## Agregar libreria Joi como esquema de validacion.
+```bash
+yarn add dotenv
+```
+
 [Volver al índice](../README.md)  # Enlace para volver al índice
 
 ---
